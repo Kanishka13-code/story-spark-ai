@@ -16,9 +16,10 @@ type AuthUserInfo = {
   subscriptionType: string;
   exp: number;
   iat: number;
+  avatar?: string; // Add this line
 };
 
-const buildUserInfo = (decodedData: AuthUserInfo): AuthUserInfo => ({
+const buildUserInfo = (decodedData: any): AuthUserInfo => ({
   email: decodedData.email || "",
   userId: decodedData.userId || "",
   name: decodedData.name || "",
@@ -27,6 +28,7 @@ const buildUserInfo = (decodedData: AuthUserInfo): AuthUserInfo => ({
   subscriptionType: decodedData.subscriptionType || "free",
   exp: decodedData.exp || 0,
   iat: decodedData.iat || 0,
+  avatar: decodedData.avatar || "", // Add this line
 });
 
 const getValidDecodedToken = () => {
